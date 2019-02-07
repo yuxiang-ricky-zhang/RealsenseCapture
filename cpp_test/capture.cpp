@@ -10,14 +10,11 @@ int main(){
     // Create a Pipeline - this serves as a top-level API for streaming and processing frames
     rs2::pipeline pipeline;
     rs2::config config;
- // 	config.enable_stream(RS2_STREAM_DEPTH, 640, 480, RS2_FORMAT_Z16, 15);
-	// config.enable_stream(RS2_STREAM_COLOR, 640, 480, RS2_FORMAT_BGR8, 15);
     config.enable_stream(RS2_STREAM_DEPTH, 1280, 720, RS2_FORMAT_Z16, 15);
-	config.enable_stream(RS2_STREAM_COLOR, 1280, 720, RS2_FORMAT_BGR8, 15);
+    config.enable_stream(RS2_STREAM_COLOR, 1280, 720, RS2_FORMAT_BGR8, 15);
 
 
     // Configure and start the pipeline
-    // pipeline.start();
     rs2::pipeline_profile profile = pipeline.start(config);
 
     int frame_count = 0;
@@ -31,8 +28,6 @@ int main(){
         rs2::depth_frame depth_frame = frames.get_depth_frame();
         rs2::video_frame color_frame = frames.get_color_frame();
 
-  		// const int w = depth_frame.as<rs2::video_frame>().get_width();
-		// const int h = depth_frame.as<rs2::video_frame>().get_height();
 
         // Get the depth frame's dimensions
         int w = depth_frame.get_width();
