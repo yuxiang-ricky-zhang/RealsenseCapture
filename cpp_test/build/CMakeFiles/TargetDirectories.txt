@@ -1,3 +1,0 @@
-/home/csnesummer/Documents/realsense/capture/cpp_test/build/CMakeFiles/edit_cache.dir
-/home/csnesummer/Documents/realsense/capture/cpp_test/build/CMakeFiles/rebuild_cache.dir
-/home/csnesummer/Documents/realsense/capture/cpp_test/build/CMakeFiles/capture.dir
