@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/csnesummer/Documents/realsense/capture/cpp_stream/capture.cpp" "/home/csnesummer/Documents/realsense/capture/cpp_stream/build/CMakeFiles/capture.dir/capture.cpp.o"
+  "/home/csnesummer/Documents/realsense/RealsenseCapture/cpp_stream/capture.cpp" "/home/csnesummer/Documents/realsense/RealsenseCapture/cpp_stream/build/CMakeFiles/capture.dir/capture.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

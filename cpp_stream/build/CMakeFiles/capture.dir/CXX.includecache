@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/csnesummer/Documents/realsense/capture/cpp_stream/capture.cpp
+/home/csnesummer/Documents/realsense/RealsenseCapture/cpp_stream/capture.cpp
 librealsense2/rs.hpp
 -
 opencv2/opencv.hpp
