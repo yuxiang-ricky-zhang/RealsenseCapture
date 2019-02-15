@@ -19,6 +19,19 @@ int main(){
 
     // Configure and start the pipeline
     rs2::pipeline_profile profile = pipe.start(config);
+    
+    auto color_stream = profile.get_stream(RS2_STREAM_DEPTH).as<rs2::video_stream_profile>();
+    auto intrinsic_para = color_stream.get_intrinsics();
+    std::cout << "fx: "+ std::to_string(intrinsic_para.fx) << std::endl;
+    std::cout << "fy: "+ std::to_string(intrinsic_para.fy) << std::endl;
+    std::cout << "cx: "+ std::to_string(intrinsic_para.ppx) << std::endl;
+    std::cout << "cy: "+ std::to_string(intrinsic_para.ppy) << std::endl;
+    std::cout << "k1"+ std::to_string(intrinsic_para.coeffs[1]) << std::endl;
+    std::cout << "k2"+ std::to_string(intrinsic_para.coeffs[2]) << std::endl;
+    std::cout << "p1"+ std::to_string(intrinsic_para.coeffs[3]) << std::endl;
+    std::cout << "p2"+ std::to_string(intrinsic_para.coeffs[4]) << std::endl;
+    std::cout << "k3"+ std::to_string(intrinsic_para.coeffs[5]) << std::endl;
+
 
     rs2_stream align_to = find_stream_to_align(profile.get_streams());
 	
