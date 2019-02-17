@@ -2,6 +2,8 @@
 #include <opencv2/opencv.hpp> // Include OpenCV API
 #include <iostream>
 #include <iomanip>
+#include <fstream>
+#include <time.h>
 
 using namespace cv;
 
@@ -25,6 +27,9 @@ int main(){
     rs2::align align(align_to);
     
     std::cout << "Now Streaming.." << std::endl;
+
+    std::ofstream outfile;
+    outfile.open("./timestamp.txt", std::ios_base::app);
 
     int frame_count = 0;
 
@@ -59,13 +64,27 @@ int main(){
 
 		if (frame_count > 50){
 
+            // Save rgb and depth images
 			std::ostringstream filename;
 			filename << std::setw(5) << std::setfill('0') << frame_count;
-
-			// cv::imwrite("./rgb/"+std::to_string(filename)+".png", color_image);
-			// cv::imwrite("./depth/"+std::to_string(filename)+".png", depth_image);
 			cv::imwrite("./rgb/"+ filename.str()+".png", color_image);
 			cv::imwrite("./depth/"+filename.str()+".png", depth_image);
+
+            // Save timestamp
+            // Absolute time
+            time_t rawtime;
+            struct tm * timeinfo;
+            char current_time_str [80];
+            time (&rawtime);
+            timeinfo = localtime (&rawtime);
+            strftime (current_time_str,80,"%Y:%m:%d %H:%M:%S",timeinfo);
+            // Relative stime from realsense
+            std::string depth_time = std::to_string(depth_frame.get_timestamp()); 
+            std::string color_time = std::to_string(color_frame.get_timestamp()); 
+
+            std::string data_entry = filename.str()+","+current_time_str+","+depth_time+","+color_time+"\n";
+            outfile << data_entry;
+
 		}
 
 
